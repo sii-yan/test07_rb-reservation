@@ -1,0 +1,35 @@
+
+// --------------- Form ---------------
+.FormWrapper {
+  display: flex;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  padding: 40px 0 180px;
+
+  @include xs-device-or-less {
+    padding:24px 0 100px
+  }
+}
+
+.FormContainer {
+  background-color: $white;
+  border-radius: 12px;
+  margin: auto;
+  width: 702px;
+
+  @include sm-device-or-less {
+    width:600px
+  }
+
+  @include xs-device-or-less {
+    width:calc(100% - 32px)
+  }
+}
+
+.Form__label--required:after {
+  content: "*";
+  color: #fd258a;
+  font-size: 14px;
+  margin-left: 4px
+}

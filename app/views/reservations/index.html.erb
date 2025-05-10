@@ -1,0 +1,88 @@
+<div class="container ReservationsContainer">
+  <h2>予約済み一覧</h2>
+
+  <div class="table-responsive">
+    <table class="table align-middle ReservationsTable">
+      <thead>
+        <tr>
+          <th>画像</th>
+          <th>施設名</th>
+          <th>紹介文</th>
+          <th class="text-nowrap">合計料金</th>
+          <th class="text-nowrap">チェックイン</th>
+          <th class="text-nowrap">チェックアウト</th>
+          <th class="text-nowrap">予約確定日時</th>
+          <th></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% if @reservations.present? %>
+          <% @reservations.each do |reservation| %>
+            <tr>
+              <!-- 画像 -->
+              <td>
+                <% if reservation.room.image.attached? %>
+                <%= image_tag reservation.room.image, class: "RoomDetails__image" %>
+                <% else %>
+                  <!-- デフォルト画像 -->
+                  <%= image_tag "default/default-image.png", class: "RoomDetails__image" %>
+                <% end %>
+              </td>
+              <!-- 施設名 -->
+              <td><%= link_to reservation.room.name, room_path(reservation.room) %></td>
+              <!-- 紹介文 -->
+              <td><%= reservation.room.description %></td>
+              <!-- 合計料金 -->
+              <td class="text-nowrap">¥<%= number_with_delimiter(reservation.total_price, delimiter: ',') %></td>
+              <!-- チェックイン -->
+              <td class="text-nowrap"><%= reservation.start_date.strftime('%Y/%m/%d') %></td>
+              <!-- チェックアウト -->
+              <td class="text-nowrap"><%= reservation.end_date.strftime('%Y/%m/%d') %></td>
+              <!-- 予約確定日時 -->
+              <td class="text-nowrap"><%= reservation.created_at.strftime('%Y/%m/%d %H:%M') %></td>
+
+              <td>
+                <div class="dropdown">
+                  <div
+                    class="d-flex align-items-center justify-content-center"
+                    id="dropdown-button"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="false"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="20"
+                      height="20"
+                      fill="currentColor"
+                      class="bi bi-three-dots"
+                      viewBox="0 0 16 16"
+                    >
+                      <path d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3"/>
+                    </svg>
+                  </div>
+
+                  <ul class="dropdown-menu dropdown-menu-lg-end DropdownMenu" aria-labelledby="dropdown-button">
+                    <li class="dropdown-item DropdownMenu__item">
+                      <%= link_to "再予約", edit_reservation_path(reservation) %>
+                    </li>
+
+                    <li class="dropdown-item DropdownMenu__item DropdownMenu__item--danger">
+                      <%= link_to "施設を削除", reservation, method: :delete, data: { confirm: "本当に削除しますか？" }, class: "ConfirmBody" %>
+                    </li>
+                  </ul>
+                </div>
+              </td>
+            </tr>
+          <% end %>
+        <% else %>
+          <tr>
+            <td colspan="6" class="text-center">
+              <p>予約はまだありません。</p>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

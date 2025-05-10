@@ -1,0 +1,62 @@
+<!-- スナックバー -->
+<% if flash[:notice] %>
+  <div class="SnackBar SnackBar--notice"><%= flash[:notice] %></div>
+<% end %>
+
+<section class="container UserSection">
+  <h2>設定</h2>
+
+  <div class="UserContainer">
+    <div class="SideNavigation">
+      <div class="SideNavigation__item active">
+        <%= link_to account_users_path do %>
+          <span class="bi bi-person-circle"></span>
+          <span>アカウント</span>
+        <% end %>
+      </div>
+
+      <div class="SideNavigation__item ">
+        <%= link_to profile_users_path do %>
+          <span class="bi bi-person-lines-fill"></span>
+          <span>プロフィール</span>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="AccountInformation">
+      <div class="TabNavigation">
+        <div class="TabNavigation__item active">
+          <%= link_to account_users_path do %>
+            <span class="bi bi-person-circle"></span>
+            <span>アカウント</span>
+          <% end %>
+        </div>
+
+        <div class="TabNavigation__item ">
+          <%= link_to profile_users_path do %>
+            <span class="bi bi-person-lines-fill"></span>
+            <span>プロフィール</span>
+          <% end %>
+        </div>
+      </div>
+
+      <div class="AccountInformation__header">
+        <h3>アカウント</h3>
+        <%= link_to  edit_user_registration_path, class: "AccountInformation__link" do %>
+          <span class="bi bi-pencil-square"></span>
+          <span>編集</span>
+        <% end %>
+      </div>
+
+      <div class="AccountInformation__input-group">
+        <label class="AccountInformation__label" for="email">メールアドレス</label>
+        <p class="AccountInformation__value"><%= @user.email %></p>
+      </div>
+
+      <div class="AccountInformation__input-group">
+        <label class="AccountInformation__label" for="password">パスワード</label>
+        <p class="AccountInformation__value">*********</p>
+      </div>
+    </div>
+  </div>
+</section>

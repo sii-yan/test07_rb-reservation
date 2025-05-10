@@ -1,0 +1,39 @@
+<!-- 検索バー -->
+<%= render "shared/search" %>
+
+<!-- ルーム一覧 -->
+<div class="container RoomsContainer">
+  <p class="RoomsContainer__result">
+    <%= pluralize(@rooms.count, "件の施設") %>が見つかりました。
+  </p>
+
+  <% if @rooms.present? %>
+    <ul class="RoomList">
+      <% @rooms.each do |room| %>
+        <li class="Room">
+          <%= link_to room_path(room), class: "Room__link" do %>
+            <% if room.image.attached? %>
+              <%= image_tag room.image, class: "Room__image" %>
+            <% else %>
+              <!-- デフォルト画像 -->
+              <%= image_tag "default/default-image.png", class: "Room__image" %>
+            <% end %>
+
+            <div class="RoomBodyWrapper">
+              <p class="Room__name"><%= room.name %></p>
+              <p class="Room__address"><%= room.address %></p>
+              <p class="Room__content"><%= room.description %></p>
+              <div class="RoomFooter">
+                <p class="Room__price">¥<%= number_with_delimiter(room.price) %>~</p>
+              </div>
+            </div>
+          <% end %>
+        </li>
+      <% end %>
+    </ul>
+  <% else %>
+    <div class="text-center">
+      <p>現在、施設が登録されていません。</p>
+    </div>
+  <% end %>
+</div>

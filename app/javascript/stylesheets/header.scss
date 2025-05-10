@@ -1,0 +1,134 @@
+
+// --------------- HeaderNav ---------------
+.Navbar {
+  height: 80px;
+
+  &--primary {
+    background-color: $white;
+  }
+
+  &--secondary {
+    background: rgba(255, 255, 255, 0); // 初期は透明
+    transition: background 0.3s ease-in-out; // アニメーション
+  }
+
+  &--secondary--scrolled {
+    background: rgba(0, 0, 0, 0.5); // RecommendAreaSection に入ったら適用
+    backdrop-filter: blur(2px);
+  }
+
+  &__logo {
+    font-family: "Montserrat", sans-serif;
+    font-size: 28px;
+    font-weight: 700;
+  }
+
+  &__logo--primary {
+    background: -webkit-linear-gradient(0deg, #ACB6E5, #e0a7c4);
+    -webkit-background-clip: text; //テキストでくり抜く
+    -webkit-text-fill-color: transparent; //くり抜いた部分は背景を表示
+  }
+
+  &__logo--secondary {
+    color: $white;
+  }
+}
+
+.NavList {
+  gap: 8px;
+}
+
+.NavItem {
+
+  &__link {
+    padding: 10px 32px;
+    font-weight: 700;
+    border-radius: 100vh;
+    transition: .3s;
+  }
+
+  // topページ以外のログイン・新規登録ボタン
+  &__login--primary {
+    border: 2px solid $bg-light-gray;
+    color: $text-gray;
+  }
+
+  &__login--primary:hover {
+    background-color: $bg-light-gray;
+  }
+
+  &__register--primary {
+    background-color: $bg-blue;
+    color: $white;
+  }
+
+  &__register--primary:hover {
+    background-color: $bg-blue-hover;
+  }
+
+  // topページのログイン・新規登録ボタン
+  &__login--secondary {
+    border: 2px solid $white;
+    color: $white;
+  }
+
+  &__login--secondary:hover {
+    background-color: $white;
+    color: $text-gray;
+  }
+
+  &__register--secondary {
+    background-color: $white;
+    color: $text-gray;
+  }
+
+  &__register--secondary:hover {
+    color: $text-light-gray;
+  }
+}
+
+.NavProfile {
+  cursor: pointer;
+
+  &__avatar {
+    border-radius: 60px;
+    margin-right: 8px;
+    width: 30px;
+  }
+
+  &__name {
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 700;
+    margin-right: 10px;
+  }
+
+  &__name--primary {
+    color: $black;
+  }
+
+  &__name--secondary {
+    color: $white;
+  }
+
+  &__home-icon {
+    color: $white;
+  }
+}
+
+.DropdownMenu {
+  margin-top: 8px;
+  min-width: 120px;
+  padding: 16px 0px;
+
+  &__item {
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 500;
+    padding: 0 16px;
+  }
+
+  &__hr {
+    margin: .5rem 0;
+  }
+}

@@ -1,0 +1,19 @@
+<div class="SearchRoomsFormContainer">
+  <%= form_with url: search_rooms_path, method: :get, local: true, class: "SearchRoomsForm" do |f| %>
+    <div class="SearchRoomsForm__input-wrapper">
+      <div class="SearchRoomsForm__input-box SearchRoomsForm__input-group--area">
+        <%= f.text_field :area, placeholder: "エリア名を入力", class: "  SearchRoomsForm__input" %>
+      </div>
+      <div class="SearchRoomsForm__divider"></div>
+      <div class="SearchRoomsForm__input-box SearchRoomsForm__input-group--keyword">
+        <%= f.text_field :keyword, placeholder: "キーワード名を入力", class: " SearchRoomsForm__input" %>
+      </div>
+    </div>
+    <div class="SearchRoomsForm__button-wrapper">
+      <button type="submit" class="SearchRoomsForm__button">
+        <span class="bi bi-search SearchRoomsForm__icon"></span>
+      </button>
+    </div>
+  <% end %>
+</div>
+

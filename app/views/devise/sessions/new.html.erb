@@ -1,0 +1,25 @@
+<div class="AccountFormWrapper">
+  <section class="AccountFormContainer">
+    <h2 class="AccountFormContainer__title">ログイン</h2>
+
+    <div class="Form AccountForm">
+      <%= form_with model: resource, url: session_path(resource_name), local: true do |f| %>
+        <%= render 'shared/error_messages', object: f.object %>
+        <div class="mb-3">
+          <%= f.label :email, "メールアドレス", class: "form-label" %>
+          <%= f.email_field :email, autocomplete: "email", placeholder: "メールアドレスを入力", class: "form-control" %>
+        </div>
+
+        <div class="mb-5">
+          <%= f.label :password, "パスワード", class: "form-label" %>
+          <%= f.password_field :password, placeholder: "パスワードを入力", class: "form-control" %>
+        </div>
+
+        <%= f.submit "ログイン", class: "btn mb-3 AccountForm__button AccountForm__button--primary" %>
+      <% end %>
+
+      <%= link_to "新しいアカウントを作成", new_user_registration_path, class: "btn AccountForm__button AccountForm__button--secondary" %>
+    </div>
+  </section>
+</div>
+

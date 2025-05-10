@@ -1,0 +1,16 @@
+ja:
+  activerecord:
+    attributes:
+      user:
+        name: 名前
+        email: メールアドレス
+      room:
+        name: 施設名
+        description: 施設詳細
+        address: 住所
+        price: 1泊あたりの金額
+        image: 施設画像
+      reservation:
+        start_date: チェックイン日
+        end_date: チェックアウト日
+        person_num: 人数

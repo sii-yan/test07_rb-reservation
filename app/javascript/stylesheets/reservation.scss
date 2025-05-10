@@ -1,0 +1,324 @@
+// --------------- 予約内容の確認 ---------------
+.ReservationConfirm {
+  &__value-group {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    font-size: 16px;
+    line-height: 26px;
+    margin-bottom: 24px;
+
+    @include sm-device-or-less {
+      margin-bottom: 16px;
+    }
+  }
+
+  &__label,
+  &__value {
+    margin-bottom: 0;
+  }
+
+  &__label {
+    font-weight: 700;
+  }
+
+  &__value--price {
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 26px;
+  }
+
+  &__description {
+    font-size: 16px;
+    line-height: 26px;
+  }
+
+  &__button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 58px;
+    font-size: 18px;
+    border-radius: 12px;
+
+    &:focus {
+      box-shadow: none;
+    }
+
+    &--submit {
+      background-color: $bg-blue;
+      color: $white;
+      margin-top: 24px;
+      margin-bottom: 16px;
+
+      &:hover {
+        background-color: $bg-blue-hover;
+        color: $white;
+      }
+
+      @include sm-device-or-less {
+        margin-top: 16px;
+      }
+    }
+
+    &--cancel {
+      border: 1px solid $bg-light-gray;
+      color: $text-gray;
+      line-height: 44px;
+
+      &:hover {
+        background: $bg-light-gray;
+      }
+    }
+  }
+}
+
+// --------------- 予約詳細 ---------------
+.ReservationDetails {
+  &__image {
+    width: 100%;
+    margin-bottom: 24px;
+    border-radius: 4px;
+  }
+
+  &__title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    @include xs-device-or-less {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  }
+
+  &__room-name > a {
+    font-size: 24px;
+    line-height: 28px;
+    color: $text-gray;
+    margin-bottom: 8px;
+
+    @include xs-device-or-less {
+      font-size: 21px;
+    }
+  }
+
+  &__room-price {
+    font-size: 28px;
+    font-weight: 700;
+    line-height: 39px;
+    color: $black;
+    margin-bottom: 0;
+
+    @include lg-device-or-less {
+      font-size: 25px;
+      line-height: 32px;
+      margin-bottom: 8px;
+    }
+
+    @include xs-device-or-less {
+      font-size: 21px;
+      line-height: 33px;
+    }
+  }
+
+  &__room-address {
+    font-size: 14px;
+    line-height: 21px;
+    color: $text-gray;
+    margin-bottom: 15px;
+  }
+
+  &__room-content {
+    font-size: 18px;
+    line-height: 27px;
+    color: $black;
+    margin-bottom: 24px;
+  }
+}
+
+.ReservationsForm {
+  &__input-group {
+    margin-bottom: 24px;
+
+    &--person-count {
+      position: relative;
+
+      > span {
+        position: absolute;
+        top: 42px;
+        right: 13.5px;
+        color: #a2a2a4;
+      }
+    }
+  }
+
+  &__label {
+    font-size: 14px;
+    line-height: 18px;
+    color: $text-gray;
+  }
+
+  &__button {
+    border-radius: 4px;
+    padding: 0px 24px;
+    width: 100%;
+    height: 60px;
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: .3s;
+
+    @include sm-device-or-less{
+      font-size: 14px;
+      line-height: 20px;
+    }
+
+    &:focus {
+      box-shadow: none;
+    }
+
+    &--submit {
+      background-color: $bg-blue;
+      color: $white;
+
+      &:hover {
+        background-color: $bg-blue-hover;
+        color: $white;
+      }
+    }
+
+    &--cancel {
+      border: 2px solid $bg-light-gray;
+      color: $text-gray;
+
+      &:hover {
+        background-color: $bg-light-gray;
+      }
+    }
+  }
+}
+
+
+// --------------- 予約済み一覧 ---------------
+.ReservationsContainer {
+  margin-top: 40px;
+  margin-bottom: 260px;
+}
+
+.ReservationsTable {
+  @include sm-device-or-less {
+    white-space: nowrap;
+  }
+
+  td,
+  th {
+    font-size: 14px;
+    line-height: 18px;
+
+    &:first-of-type {
+      padding-left: 0 !important;
+    }
+
+    &:last-of-type {
+      width: 59px;
+    }
+  }
+
+  td {
+    padding: 16px 0.5rem !important;
+
+    &:first-of-type img {
+      width: 120px;
+    }
+
+    .dropdown {
+      cursor: pointer;
+    }
+  }
+}
+
+
+// --------------- 施設予約フォーム ---------------
+.ReservationForm {
+  &__input-container {
+    display: flex;
+    gap: 24px;
+    background-color: #eeeeee;
+    padding: 24px;
+    margin-bottom: 24px;
+    border-radius: 8px;
+
+    @include xs-device-or-less {
+      flex-direction: column;
+      gap: 16px;
+      padding: 16px;
+      margin-bottom: 16px;
+    }
+  }
+
+  &__input-group {
+    width: calc(33.3333% - 16px);
+
+    @include xs-device-or-less {
+      width: 100%;
+    }
+
+    > label {
+      margin-bottom: 8px;
+    }
+
+    &--person-count {
+      position: relative;
+
+      > span {
+        position: absolute;
+        top: 42px;
+        right: 13.5px;
+        color: #a2a2a4;
+      }
+    }
+  }
+
+  &__input--date {
+    position: relative;
+
+    &:after {
+      content: "";
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      width: 15px;
+      height: 15px;
+      background-image: url(/images/icons/calendar.svg);
+      background-repeat: round;
+    }
+  }
+
+  &__button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 70px;
+    line-height: 58px;
+    font-size: 18px;
+    font-weight: 700;
+    border-radius: 12px;
+    background-color: $bg-blue;
+    color: $white;
+
+    &:focus {
+      box-shadow: none;
+    }
+
+    &:hover {
+      background-color: $bg-blue-hover;
+      color: $white;
+    }
+  }
+}

@@ -1,0 +1,60 @@
+<div class="FormWrapper">
+  <section class="FormContainer">
+    <h2 class="mb-5 FormContainer__title">再予約する</h2>
+
+    <div class="ReservationDetails">
+      <% if @reservation.room.image.attached? %>
+        <%= image_tag @reservation.room.image, class: "ReservationDetails__image" %>
+      <% else %>
+        <%= image_tag "default/default-image.png", class: "ReservationDetails__image" %>
+      <% end %>
+
+      <div class="ReservationDetails__title">
+        <span class="ReservationDetails__room-name">
+          <%= link_to @reservation.room.name, room_path(@reservation.room) %>
+        </span>
+
+        <span class="ReservationDetails__room-price">
+          ¥<%= number_with_delimiter(@reservation.room.price) %>~
+        </span>
+      </div>
+
+      <span class="ReservationDetails__room-address">
+        <%= @reservation.room.address %>
+      </span>
+
+      <p class="ReservationDetails__room-content">
+        <%= @reservation.room.description %>
+      </p>
+    </div>
+
+    <%= form_with model: @reservation, url: confirm_reservations_path, method: :post, local: true, class: "Form ReservationsForm" do |f| %>
+      <%= render 'shared/error_messages', object: f.object %>
+      <%= f.hidden_field :room_id %>
+
+      <div class="ReservationsForm__input-group">
+        <%= f.label :start_date, "チェックイン", class: "form-label ReservationsForm__label Form__label--required" %>
+
+        <%= f.text_field :start_date, class: "form-control js-picker", placeholder: "---- / -- / --" %>
+        
+      </div>
+
+      <div class="ReservationsForm__input-group">
+        <%= f.label :end_date, "チェックアウト", class: "form-label ReservationsForm__label Form__label--required" %>
+
+        <%= f.text_field :end_date, class: "form-control js-picker", placeholder: "---- / -- / --" %>
+
+      </div>
+
+      <div class="ReservationsForm__input-group ReservationsForm__input-group--person-count">
+        <%= f.label :person_num, "人数", class: "form-label ReservationsForm__label Form__label--required" %>
+
+        <%= f.number_field :person_num, class: "form-control ReservationsForm__input ReservationsForm__input--person-count", placeholder: "0" %>
+        <span>人</span>
+      </div>
+
+      <%= f.submit "再予約する", class: "btn mb-3 ReservationsForm__button ReservationsForm__button--submit" %>
+    <% end %>
+    <%= link_to "キャンセル", reservations_path, class: "btn ReservationsForm__button ReservationsForm__button--cancel" %>
+  </section>
+</div>

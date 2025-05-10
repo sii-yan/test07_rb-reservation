@@ -1,0 +1,80 @@
+<!-- スナックバー -->
+<% if flash[:notice] %>
+  <div class="SnackBar SnackBar--notice"><%= flash[:notice] %></div>
+<% end %>
+
+<section class="container UserSection">
+  <h2>設定</h2>
+
+  <div class="UserContainer">
+    <div class="SideNavigation">
+      <div class="SideNavigation__item ">
+        <%= link_to account_users_path do %>
+          <span class="bi bi-person-circle"></span>
+          <span>アカウント</span>
+        <% end %>
+      </div>
+
+      <div class="SideNavigation__item active">
+        <%= link_to profile_users_path do %>
+          <span class="bi bi-person-lines-fill"></span>
+          <span>プロフィール</span>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="AccountInformation">
+      <div class="TabNavigation">
+        <div class="TabNavigation__item ">
+          <%= link_to account_users_path do %>
+            <span class="bi bi-person-circle"></span>
+            <span>アカウント</span>
+          <% end %>
+        </div>
+
+        <div class="TabNavigation__item active">
+          <%= link_to profile_users_path do %>
+            <span class="bi bi-person-lines-fill"></span>
+            <span>プロフィール</span>
+          <% end %>
+        </div>
+      </div>
+
+      <div class="AccountInformation__header">
+        <h3>プロフィール</h3>
+
+        <%= link_to  profile_edit_users_path, class: "AccountInformation__link" do %>
+          <span class="bi bi-pencil-square"></span>
+          <span>編集</span>
+        <% end %>
+      </div>
+
+
+      <div class="AccountInformation__input-group">
+        <label class="AccountInformation__label" for="image">アイコン画像</label>
+
+        <p class="AccountInformation__value AccountInformation__value--image">
+          <% if @user.profile_image.present? %>
+            <%= image_tag @user.profile_image %>
+          <% else %>
+            <%= image_tag "default/default-avatar.png" %>
+          <% end %>
+        </p>
+      </div>
+
+      <div class="AccountInformation__input-group">
+        <label class="AccountInformation__label" for="name">名前</label>
+
+        <p class="AccountInformation__value"><%= @user.name %></p>
+      </div>
+
+      <div class="AccountInformation__input-group">
+        <label class="AccountInformation__label" for="introduction">自己紹介</label>
+
+        <p AccountInformation__value><%= @user.bio %></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+

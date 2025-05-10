@@ -1,0 +1,79 @@
+body {
+  background-color: $white;
+  color: $black;
+  font-family: "Lato", "Noto Sans JP", sans-serif;
+}
+
+footer {
+  margin-top: 40px;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  font-size: 14px;
+  line-height: 18px;
+}
+
+p {
+  font-size: 14px;
+  line-height: 18px;
+  margin-bottom: 0;
+}
+
+
+li {
+  list-style: none;
+}
+
+label {
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 18px;
+  margin-bottom: 8px;
+}
+
+input,
+textarea {
+  border-color: $bg-light-gray;
+  border-radius: 4px;
+  font-size: 14px ;
+
+  &:focus {
+    box-shadow: none !important;
+  }
+
+  &::placeholder {
+    color: $text-light-gray !important;
+    font-size: 14px;
+  }
+}
+
+input {
+  height: 45px;
+}
+
+_::-webkit-full-page-media, _:future, :root input::placeholder {
+  margin-bottom: -1px;
+}
+
+textarea {
+  height: 124px;
+  padding: 12px !important;
+}
+
+// --------------- bootstrap編集 ---------------
+.container,.container-fluid {
+  max-width: 1440px;
+  padding-right: 32px;
+  padding-left: 32px;
+
+  @include xs-device-or-less {
+    padding-right: 16px;
+    padding-left: 16px;
+  }
+}
+
+.form-control {
+  border-radius: 4px;
+}

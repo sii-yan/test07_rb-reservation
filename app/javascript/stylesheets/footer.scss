@@ -1,0 +1,33 @@
+.Footer {
+  align-items: center;
+  background-color: $black;
+  display: flex;
+  height: 465px;
+
+  &__logo {
+    font-family: "Montserrat", sans-serif;
+    color: $white;
+    font-size: 40px;
+    font-weight: 700;
+    margin-bottom: 16px;
+    width: 294px;
+
+    @include xs-device-or-less {
+      font-size: 32px;
+      line-height: 42px;
+      margin-bottom: 24px;
+    }
+  }
+
+  &__copyright {
+    color: $white;
+    font-weight: 400;
+    line-height: 16px;
+    margin-bottom: 0;
+
+    @include xs-device-or-less {
+      font-size: 12px;
+      line-height: 14px;
+    }
+  }
+}

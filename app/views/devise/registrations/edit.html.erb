@@ -1,0 +1,88 @@
+<section class="container UserSection">
+  <h2>設定</h2>
+
+  <div class="UserContainer">
+    <div class="SideNavigation">
+      <div class="SideNavigation__item active">
+        <%= link_to account_users_path do %>
+          <span class="bi bi-person-circle"></span>
+          <span>アカウント</span>
+        <% end %>
+      </div>
+      <div class="SideNavigation__item">
+        <%= link_to profile_users_path do %>
+          <span class="bi bi-person-lines-fill"></span>
+          <span>プロフィール</span>
+        <% end %>
+      </div>
+    </div>
+
+    <section class="AccountInformation">
+      <div class="TabNavigation">
+        <div class="TabNavigation__item active">
+          <%= link_to account_users_path do %>
+            <span class="bi bi-person-circle"></span>
+            <span>アカウント</span>
+          <% end %>
+        </div>
+        <div class="TabNavigation__item">
+          <%= link_to profile_users_path do %>
+            <span class="bi bi-person-lines-fill"></span>
+            <span>プロフィール</span>
+          <% end %>
+        </div>
+      </div>
+
+      <div class="AccountInformation__header">
+        <h3>アカウント</h3>
+      </div>
+
+      <%= form_with model: @user, scope: :user, url: registration_path(@user), method: :put, local: true do |f| %>
+        <%= render 'devise/shared/error_messages', resource: @user %>
+
+        <div class="mb-4 AccountInformation__input-group">
+          <%= f.label :email, "メールアドレス", class: "AccountInformation__label" %>
+          <div class="AccountInformation__input-wrapper">
+            <%= f.email_field :email, autocomplete: "email", placeholder: "メールアドレスを入力", class: "form-control AccountInformation__input" %>
+          </div>
+        </div>
+
+        <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+          <div>現在の確認待ちメール: <%= resource.unconfirmed_email %></div>
+        <% end %>
+
+        <div class="mb-4 AccountInformation__input-group">
+          <%= f.label :password, class: "AccountInformation__label" do %>
+            <span>変更後パスワード</span><br>
+            <span class="AccountInformation__label--caption">※変更する場合のみ</span>
+          <% end %>
+          <div class="AccountInformation__input-wrapper">
+            <%= f.password_field :password, autocomplete: "new-password", placeholder: "変更後パスワードを入力", class: "form-control AccountInformation__input" %>
+          </div>
+        </div>
+
+        <div class="mb-4 AccountInformation__input-group">
+          <%= f.label :password_confirmation, class: "AccountInformation__label" do %>
+            <span>確認用パスワード</span><br>
+            <span class="AccountInformation__label--caption">※変更する場合のみ</span>
+          <% end %>
+          <div class="AccountInformation__input-wrapper">
+            <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "確認用パスワードを入力", class: "form-control AccountInformation__input" %>
+          </div>
+        </div>
+
+        <div class="mb-4 AccountInformation__input-group">
+          <%= f.label :current_password, "現在のパスワード", class: "AccountInformation__label" %>
+          <div class="AccountInformation__input-wrapper">
+            <%= f.password_field :current_password, autocomplete: "current-password", placeholder: "現在のパスワードを入力", class: "form-control AccountInformation__input" %>
+          </div>
+        </div>
+
+        <div class="AccountInformation__buttons">
+          <%= link_to "キャンセル", :back, class: "btn AccountInformation__button AccountInformation__button--secondary" %>
+          <%= f.submit "保存", class: "btn AccountInformation__button AccountInformation__button--primary" %>
+        </div>
+      <% end %>
+    </section>
+  </div>
+</section>
